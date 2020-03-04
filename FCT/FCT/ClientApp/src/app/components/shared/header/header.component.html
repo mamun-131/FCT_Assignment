@@ -1,0 +1,92 @@
+<!--<mat-toolbar color="primary" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+  <mat-toolbar-row>
+    <div class="example-button-row float-right">
+      <button mat-button>Basic</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>-->
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-secondary border-bottom box-shadow mb-3">
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">FCT</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                aria-label="Toggle navigation"
+                [attr.aria-expanded]="isExpanded"
+                (click)="toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+             [ngClass]="{ show: isExpanded }">
+          <!-- <button mat-button>Login</button>-->
+         <!-- <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>-->
+          <span><a><app-user-menu [nameM]="nameM"></app-user-menu> </a></span>
+          <!--<ul class="navbar-nav flex-grow">
+    <li class="nav-item"
+        [routerLinkActive]="['link-active']"
+        [routerLinkActiveOptions]="{ exact: true }">
+      <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+    </li>
+  </ul>-->
+        </div>
+      </div>
+    </nav>
+
+<!--<mat-toolbar color="primary" class="mat-toolbar">
+  <mat-toolbar-row>
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">FCT</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                aria-label="Toggle navigation"
+                [attr.aria-expanded]="isExpanded"
+                (click)="toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+             [ngClass]="{ show: isExpanded }">
+          <ul class="navbar-nav flex-grow">
+            <li class="nav-item"
+                [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Short tab">
+        <div class="example-small-box mat-elevation-z4">
+          Small content
+        </div>
+      </mat-tab>
+      <mat-tab label="Long tab">
+        <div class="example-large-box mat-elevation-z4">
+          Large content
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-toolbar-row>
+</mat-toolbar>-->
