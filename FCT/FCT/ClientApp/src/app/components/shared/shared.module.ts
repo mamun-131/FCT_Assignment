@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,16 +28,21 @@ import { ProductService } from "./services/product.services";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserMenuComponent } from "./user-menu/user-menu.component";
+import { MenuComponent } from './menu/menu.component';
+import { OrderByPipe } from "./pipes/order-by.pipe";
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    MenuComponent,
+    OrderByPipe
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FlexLayoutModule,
     MatGridListModule,
     MatButtonModule,
     MatSnackBarModule,
@@ -62,6 +68,9 @@ import { UserMenuComponent } from "./user-menu/user-menu.component";
     HeaderComponent,
     FooterComponent,
     UserMenuComponent,
+    MenuComponent,
+    OrderByPipe,
+    FlexLayoutModule,
     MatGridListModule,
     MatButtonModule,
     MatSnackBarModule,

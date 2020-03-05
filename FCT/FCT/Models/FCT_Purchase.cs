@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace FCT.Models
 {
-    public class Product
+    public class FCT_Purchase
     {
         public int id { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
+        public int userId { get; set; }
+        public int productId { get; set; }
     }
 }

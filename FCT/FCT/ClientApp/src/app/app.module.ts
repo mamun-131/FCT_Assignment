@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
+//import { PagesModule } from './components/pages/pages.module';
 import { AppRoutingModule } from './app.routing.module'
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';

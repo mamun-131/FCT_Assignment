@@ -1,0 +1,20 @@
+
+button {
+  color: white;
+}
+span {
+  color: black;
+}
+.product-item {
+  position: relative;
+  height: auto;
+  padding: 0 10px;
+  transition: .4s;
+}
+.title-wrap {
+ 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 500;
+}

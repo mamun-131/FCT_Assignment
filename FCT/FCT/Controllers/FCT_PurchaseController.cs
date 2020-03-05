@@ -12,26 +12,26 @@ using Microsoft.EntityFrameworkCore;
 /**
  * This is a .NET CORE and Angular app example coded by Md Mamunur Rahman 
  * 
- * @FileName: ProductController.cs
+ * @FileName: FCT_PurchaseController.cs
  * @Author Md Mamunur Rahman
  * @Phone: 6474473215
  * @website: http://mamun-portfolio.azurewebsites.net/Default.aspx
  * @Last Update 03-Mar-2020
- * @description: this file is Controller clss file for Product Table
+ * @description: this file is Controller clss file for FCT_Purchase Table
  */
 
 namespace FCT.Controllers
 {
     /**  
    * <summary>  
-   * This is the ProductController class for controlling CRUD operation with database.  
+   * This is the FCT_PurchaseController class for controlling CRUD operation with database.  
    * </summary>  
-   * @class ProductController  
+   * @class FCT_PurchaseController  
    */
 
     [Route("api/")]
     [ApiController]
-    public class ProductController : Controller
+    public class FCT_PurchaseController : Controller
     {
         //PRIVATE INSTANCE VARIABLE++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private ApplicationDbContext _context;
@@ -44,38 +44,47 @@ namespace FCT.Controllers
         * @Constructor ProductController
         * @param {object ApplicationDbContext} context
         */
-        public ProductController(ApplicationDbContext context)
+        public FCT_PurchaseController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         //PUBLIC METHODES++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
-        * <summary>
-        * This is the public method for making query for all products
-        * </summary>
-        * @method GetAllProducts
-        * @returns {IEnumerable<Product>} 
-        */
-        [HttpGet("GetAllProducts")]
-        public IEnumerable<Product> GetAllProducts()
+    * <summary>
+    * This is the public method for adding new data.
+    * </summary>
+    * @method AddPersion
+    * @returns {ActionResult<Person>} 
+    * @param {object Person} person
+    * POST : /api/FCT_Purchase/AddPurchase
+    */
+
+        [HttpPost("AddPurchase")]
+        public ActionResult<FCT_Purchase> AddPurchase(FCT_Purchase purchase)
         {
-            
+            var pourchase1 = new FCT_Purchase()
+            {
+                id = purchase.id,
+                userId = purchase.userId,
+                productId = purchase.productId
+            };
+
             try
             {
-              //  return _context.product.FromSqlRaw($"INSERT INTO FCT_Product VALUES('TV')").ToList();
-
-                //return _context.product.FromSqlRaw($"SELECT pd.id, pd.name, pc.price FROM FCT_Product pd LEFT JOIN FCT_ProductPrice pc ON pd.id = pc.productId").ToList();
-                  return _context.product.FromSqlRaw($"exec getAllProducts").ToList();
-
+              //  _context.FCT_Purchase.FromSqlRaw();
+                 _context.FCT_Purchase.Add(pourchase1);
+                 _context.SaveChanges();
+                return Ok(pourchase1);
             }
             catch (Exception)
             {
 
-                return null;
+                return BadRequest();
             }
 
-        }
 
+
+        }
     }
 }

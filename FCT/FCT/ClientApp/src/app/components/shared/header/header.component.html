@@ -20,22 +20,14 @@
         </button>
         <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
              [ngClass]="{ show: isExpanded }">
-          <!-- <button mat-button>Login</button>-->
-         <!-- <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>-->
-          <span><a><app-user-menu [nameM]="nameM"></app-user-menu> </a></span>
-          <!--<ul class="navbar-nav flex-grow">
-    <li class="nav-item"
-        [routerLinkActive]="['link-active']"
-        [routerLinkActiveOptions]="{ exact: true }">
-      <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]="['link-active']">
-      <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]="['link-active']">
-      <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-    </li>
-  </ul>-->
+          <app-menu></app-menu>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+             [ngClass]="{ show: isExpanded }">
+
+
+             <span><a><app-user-menu [nameM]="nameM"></app-user-menu> </a></span>
+
         </div>
       </div>
     </nav>

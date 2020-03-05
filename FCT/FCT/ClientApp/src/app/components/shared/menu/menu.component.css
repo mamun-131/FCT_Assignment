@@ -1,0 +1,20 @@
+.mat-tab-label {
+
+  background-color: transparent;
+  color: white;
+  font-size:large;
+  font-weight: 300;
+}
+
+  /* Styles for the active tab label */
+  .mat-tab-label.mat-tab-label-active {
+
+    background-color: transparent;
+    color:  aqua;
+    font-weight: 400;
+  }
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}

@@ -15,13 +15,35 @@ export class ProductService {
 
   }
 
+  // Http Headers
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+
+    })
+  }
+  options = {
+    headers: this.httpOptions.headers
+  }
 
   getAllProducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>('api/GetAllProducts/')
       .pipe(
         retry(1),
         catchError(this.errorHandl)
-      )
+      );
+  }
+
+  addPurchase(userId: number, productId:number) {
+    var body = {
+      id:3,
+      userId: 3,
+      productId: 3
+    };
+    return this.httpClient.post('/api/FCT_Purchase/AddPurchase', body,this.options);
   }
 
 

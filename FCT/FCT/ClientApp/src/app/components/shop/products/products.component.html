@@ -1,0 +1,47 @@
+<div class="container">
+
+  <mat-toolbar>
+    Products
+  </mat-toolbar>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="width:100%;">
+      <div style="float: none;">
+
+        <button mat-icon-button (click)="changeViewType('list', 100)">
+          <mat-icon>view_list</mat-icon>
+        </button>
+        <button mat-icon-button (click)="changeViewType('list', 32.3)">
+          <mat-icon>view_module</mat-icon>
+        </button>
+        <button mat-icon-button (click)="changeViewType('list', 24)">
+          <mat-icon>view_comfy</mat-icon>
+        </button>
+      </div>
+      <div style="clear:both">
+      </div>
+      <div class="sortcontrol">
+
+        <mat-form-field>
+          <mat-label>Price Sorting</mat-label>
+          <select matNativeControl  (change)="onChangeSorting($event.target.value)">
+            <option value="low">Price, low to high</option>
+            <option value="high">Price, high to low</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </nav>
+
+ 
+    <div>
+
+      <div  fxLayout="row wrap" class="products-wrapper">
+        <!--  <div *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">-->
+        <div *ngFor="let product of products | orderBy:sortByOrder" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="20" class="col">
+          <div class="product-box">
+            <app-product [product]="product" class="product-box" ></app-product>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>

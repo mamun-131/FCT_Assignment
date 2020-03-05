@@ -1,0 +1,68 @@
+.left-sidebar-wrapper mat-sidenav.filter-sidenav.mat-drawer.mat-sidenav.ng-tns-c15-4.ng-trigger.ng-trigger-transform.ng-tns-c13-3.ng-star-inserted.mat-drawer-over {
+  padding-right: 10px;
+}
+
+/*.mat-expansion-panel {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border: 1px solid #d1d0d0;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+  .mat-expansion-panel-header-title span
+
+{
+  font-size: 17px;
+  text-transform: capitalize;
+  font-weight: 500;
+  line-height: 1;
+}*/
+/*.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+}
+.mat-card-deco{
+    top:10px;
+    width:100%;
+ height:600px;
+    background-color:white;
+}*/
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+ 
+}
+
+
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgb(0, 0, 0);
+}
+
+.sortcontrol {
+  float: right;
+  font-size:small;
+}
+/*.product-box{
+    float:left;
+
+    position:relative;
+}*/
+.product-box {
+  width: 100%;
+height:150px;
+}

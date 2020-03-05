@@ -1,0 +1,24 @@
+<div class="product-item"  >
+  <mat-card fxLayout="column">
+
+     <div class="product-info-wrapper">
+        <div class="title-wrap">
+           <h4>{{product.name}}</h4>
+        </div>
+        <div class="stars">
+           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+        </div>
+        <div class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center">
+          <p>{{product.price }}</p>
+
+          <a><button mat-mini-fab color="warn" (click)="purchaseItem(product.id)"> Buy</button></a>
+          <!--<a><button mat-mini-fab color="warn" > Buy</button></a>-->
+        </div>
+ 
+     </div>
+  </mat-card>
+</div>
