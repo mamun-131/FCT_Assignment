@@ -10,6 +10,7 @@ import { Product } from '../../../models/product.model';
 export class HomeComponent implements OnInit {
 
   constructor(private productService: ProductService) {
+    //to get all products to display
     this.productService.getAllProducts()
       .subscribe(
         (products: Product[]) => {

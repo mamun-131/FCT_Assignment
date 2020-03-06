@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
+
+  //login user
   submit() {
     if (this.form.valid) {
      // this.submitEM.emit(this.form.value);

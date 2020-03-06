@@ -13,6 +13,8 @@ export class AppService {
 
   constructor() { }
 
+  //state management by RXJS BehaviorSubject
+
   private ST: BehaviorSubject<string> = new BehaviorSubject<string>(localStorage.getItem('isLogin'));
 
   getST(): Observable<string> {

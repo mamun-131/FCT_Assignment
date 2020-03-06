@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   public viewCol: number = 25;
 
   constructor(private productService: ProductService) {
+    //get all products
     this.productService.getAllProducts()
       .subscribe(
         (products: Product[]) => {

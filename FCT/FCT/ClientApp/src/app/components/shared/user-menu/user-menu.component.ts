@@ -23,6 +23,8 @@ export class UserMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //get the user detail if JET Token is active
     if (localStorage.getItem('token') != null) {
       this.service.getUserProfile().subscribe(
         res => {
@@ -35,10 +37,9 @@ export class UserMenuComponent implements OnInit {
         },
       );
     }
+  }
 
-
-
-    }
+  //logout and delete the token from local storage 
     onLogout() {
         localStorage.removeItem('token');
         this.appService.setST('');

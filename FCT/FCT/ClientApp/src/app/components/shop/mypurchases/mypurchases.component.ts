@@ -8,9 +8,11 @@ import { ProductService } from '../../shared/services/product.services';
 })
 export class MypurchasesComponent implements OnInit {
   purchaseDetail: any;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    //get the buying list of users
     this.productService.getAllPurchases()
       .subscribe(
         (purchase: any[]) => {
@@ -20,6 +22,7 @@ export class MypurchasesComponent implements OnInit {
       );
   }
 
+  //To cancle a purchase
   delectPurchase(id: number) {
     this.productService.deletePurchasesById(id)
       .subscribe(

@@ -63,10 +63,7 @@ namespace FCT.Controllers
             
             try
             {
-              //  return _context.product.FromSqlRaw($"INSERT INTO FCT_Product VALUES('TV')").ToList();
-
-                //return _context.product.FromSqlRaw($"SELECT pd.id, pd.name, pc.price FROM FCT_Product pd LEFT JOIN FCT_ProductPrice pc ON pd.id = pc.productId").ToList();
-                  return _context.product.FromSqlRaw($"exec getAllProducts").ToList();
+                       return _context.product.FromSqlRaw($"exec getAllProducts").ToList();
 
             }
             catch (Exception)

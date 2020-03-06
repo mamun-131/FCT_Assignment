@@ -11,9 +11,9 @@ export class MainComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
+    //pass the user name for state management
     this.appService.getST().subscribe(res => {
       this.gotLoggedIn = res;
-      console.log(res + '  ' + "Main");
     });
   }
 

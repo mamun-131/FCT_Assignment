@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
 
   }
 
-
+  //handling the mat-tab menu
   allTabClick(event: MouseEvent) {
     let el = event.target as HTMLInputElement;
     //console.log(el.id);

@@ -13,7 +13,7 @@ import { ProductService } from '../../../shared/services/product.services';
 })
 export class ProductComponent implements OnInit {
 
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+ @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
   
  @Input() product: Product;
 
@@ -24,6 +24,7 @@ export class ProductComponent implements OnInit {
 
   purchaseItem(id: number) {
 
+    //to buy a product
     this.productService.addPurchase(String(localStorage.getItem('userId')),id).subscribe(
       (res: any) => {
         console.log(res);

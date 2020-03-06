@@ -29,6 +29,7 @@ export class ProductService {
     headers: this.httpOptions.headers
   }
 
+  //get all products
   getAllProducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>('api/GetAllProducts/')
       .pipe(
@@ -37,6 +38,7 @@ export class ProductService {
       );
   }
 
+  //buy a product
   addPurchase(userId: string, productId:number) {
     var body = {      
       userId: userId,
@@ -45,6 +47,7 @@ export class ProductService {
     return this.httpClient.post('/api/FCT_Purchase', body,this.options);
   }
 
+  //get the buying list of user
   getAllPurchases(): Observable<any[]> {
     return this.httpClient.get<any[]>('api/FCT_PurchaseDetail')
       .pipe(
@@ -53,7 +56,7 @@ export class ProductService {
       );
   }
 
-
+  //cancle purchase from user buying list
   deletePurchasesById(id: number) {
     return this.httpClient.delete('api/FCT_Purchase/' + id)
       .pipe(

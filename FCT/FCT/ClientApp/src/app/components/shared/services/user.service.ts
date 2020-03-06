@@ -32,6 +32,7 @@ export class UserService {
     constructor(private fb: FormBuilder, private http: HttpClient) {
     }
 
+  //register the user
   register(formData) {
     var body = {
       UserName: formData.UserName,
@@ -42,10 +43,12 @@ export class UserService {
     return this.http.post('api/ApplicationUser/Register', body , this.options);
   }
 
+  //login the user
   login(formData) {
     return this.http.post('api/ApplicationUser/Login', formData, this.options);
   }
 
+  //get user profile
   getUserProfile() {
     return this.http.get('api/UserProfile');
   }
