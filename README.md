@@ -1,4 +1,5 @@
 #.NET CORE 3.1.2 and Angular 8.2.12 -- Product Display, Buying and Canceling Order, JWT and Core Identity for Authentication 
+https://fcttestproject.azurewebsites.net/products
 
 ## Running Example of .NET CORE Web API in C# anlong with Angular 8
 This is a .NET CORE Product Display, Buying and Canceling Order, JWT and Core Identity for Authentication
