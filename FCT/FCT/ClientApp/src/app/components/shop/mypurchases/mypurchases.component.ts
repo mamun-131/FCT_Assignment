@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../shared/services/product.services';
 
 @Component({
   selector: 'app-mypurchases',
@@ -6,11 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mypurchases.component.css']
 })
 export class MypurchasesComponent implements OnInit {
-
-  constructor() { }
+  purchaseDetail: any;
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-  
+    this.productService.getAllPurchases()
+      .subscribe(
+        (purchase: any[]) => {
+          this.purchaseDetail = purchase;
+          console.log(purchase);
+        }
+      );
   }
 
+  delectPurchase(id: number) {
+    this.productService.deletePurchasesById(id)
+      .subscribe(
+        (res) => {
+          this.productService.getAllPurchases()
+            .subscribe(
+              (purchase: any[]) => {
+                this.purchaseDetail = purchase;
+                console.log(purchase);
+              }
+            );
+          console.log(res);
+        }
+      );
+    
+  }
 }

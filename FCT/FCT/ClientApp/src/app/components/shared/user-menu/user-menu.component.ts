@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 //import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { AppService } from '../../../app.service';
 //import { AppService } from '../../../app.service';
 @Component({
   selector: 'app-user-menu',
@@ -10,47 +12,39 @@ import { Router } from '@angular/router';
 })
 export class UserMenuComponent implements OnInit {
   userDetails: any = {};
-  isLoggedIn = false;
-
-  @Input() nameM: string;
 
 
-  constructor(private router: Router) {
+  @Input() gotLoggedIn: string;
 
-    //this.nameM = this.service.currentLoginStatus;
-    // this.nameM = this.service.getLoginTracker();
+
+  constructor(private router: Router, private service: UserService, private appService: AppService) {
+
 
   }
 
   ngOnInit() {
+    if (localStorage.getItem('token') != null) {
+      this.service.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res;
+          console.log(this.userDetails);
+          console.log(this.gotLoggedIn);
+        },
+        err => {
+          console.log(err);
+        },
+      );
+    }
 
 
-    //    if (localStorage.getItem('token') != null) {
-    //        this.isLoggedIn = true;
 
-    //        this.service.getUserProfile().subscribe(
-    //            res => {
-    //                this.userDetails = res;
+    }
+    onLogout() {
+        localStorage.removeItem('token');
+        this.appService.setST('');
+        localStorage.removeItem('isLogin');
+      this.router.navigate(['/pages/login']);
+    }
 
-    //            },
-    //            err => {
-    //                console.log(err);
-    //            },
-    //        );
-    //    }
-    //    else {
-    //        this.isLoggedIn = false;
-    //    }
-
-
-    //}
-    //onLogout() {
-    //    localStorage.removeItem('token');
-    //    this.isLoggedIn = false;
-    //    this.appService.setST('');
-    //    localStorage.removeItem('isLogin');
-    //    //this.router.navigate(['/user/login']);
-    //}
-
-  }
+  
 }

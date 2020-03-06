@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-title>Registration</mat-card-title>
+  <mat-card-content>
+    <form #regForm="ngForm" fxLayout="row wrap" (submit)="onRegister(regForm)">
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <mat-form-field class="w-100">
+          <input matInput
+                 placeholder="Username or email address (required)"
+                 #UserName="ngModel"
+                 [(ngModel)]="regFormModel.UserName"
+                 name="UserName"
+                 required>
+          <mat-error *ngIf="UserName.invalid">Please enter a valid Username</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <mat-form-field class="w-100">
+          <input type="email"
+                 matInput
+                 placeholder="Email (required)"
+                 #Email="ngModel"
+                 [(ngModel)]="regFormModel.Email"
+                 name="Email"
+                 required>
+          <mat-error *ngIf="Email.invalid">Please enter a valid Email</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <mat-form-field class="w-100">
+          <input matInput
+                 placeholder="Full Name (required)"
+                 #FullName="ngModel"
+                 [(ngModel)]="regFormModel.FullName"
+                 name="FullName"
+                 required>
+          <mat-error *ngIf="FullName.invalid">Please enter a valid Full Name</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <mat-form-field class="w-100">
+          <input type="password"
+                 matInput
+                 placeholder="Password (required)"
+                 #Password="ngModel"
+                 [(ngModel)]="regFormModel.Password"
+                 name="Password"
+                 minlength="4"
+                 required>
+          <mat-error *ngIf="Password.invalid">Please enter a valid Password</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <mat-form-field class="w-100">
+          <input type="password"
+                 matInput
+                 placeholder="Confirm Password (required)"
+                 #ConfirmPassword="ngModel"
+                 [(ngModel)]="regFormModel.ConfirmPassword"
+                 name="ConfirmPassword"
+                 pattern="{{ Password.value }}"
+                 required>
+          <mat-error *ngIf="ConfirmPassword.invalid">Password did not match</mat-error>
+        </mat-form-field>
+      </div>
+
+           <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <button class="btn-project" mat-raised-button color="accent" type="submit">Register</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

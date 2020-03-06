@@ -1,25 +1,24 @@
+<span style="color:white;padding-right:10px;"><small> {{gotLoggedIn}}</small></span>
 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
   <!--<mat-icon>more_vert</mat-icon>-->
 
   <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon>
-  
+
 </button>
-<span *ngIf="nameM == 'LoggedIn-ST'"><small> {{userDetails.fullName}}</small></span>
+
 <mat-menu #menu="matMenu">
-  <button *ngIf="!nameM" mat-menu-item class="navbar-link" [routerLink]="['/pages/login']">
+  <button *ngIf="gotLoggedIn == ''" mat-menu-item class="navbar-link" [routerLink]="['/pages/login']">
     <mat-icon>add_circle</mat-icon>
     <span>Login</span>
   </button>
-  <!--<button mat-menu-item *ngIf="nameM == 'LoggedIn-ST'" class="navbar-link" [routerLink]="['/user/profile']">
-    <mat-icon>person</mat-icon>
-    <span>Profile</span>
+  <button *ngIf="gotLoggedIn == ''" mat-menu-item class="navbar-link" [routerLink]="['/pages/registration']">
+    <mat-icon>add_circle</mat-icon>
+    <span>Registration</span>
   </button>
-  <button mat-menu-item *ngIf="nameM == 'LoggedIn-ST'" class="navbar-link" [routerLink]="['/admin/admin-home']">
-    <mat-icon>home</mat-icon>
-    <span>Admin Home</span>
-  </button>
-  <button *ngIf="nameM == 'LoggedIn-ST'" mat-menu-item (click)="onLogout()">
+
+  <button *ngIf="gotLoggedIn != null" mat-menu-item (click)="onLogout()">
+ 
     <mat-icon>remove_circle</mat-icon>
     <span>Logout</span>
-  </button>-->
+  </button>
 </mat-menu>

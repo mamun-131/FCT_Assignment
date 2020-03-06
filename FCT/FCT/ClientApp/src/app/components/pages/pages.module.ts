@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { PagesRoutingModule } from './pages.routing.module';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -16,7 +17,8 @@ import { PagesRoutingModule } from './pages.routing.module';
     PagesRoutingModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
 
   ]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  gotLoggedIn: string;
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.appService.getST().subscribe(res => {
+      this.gotLoggedIn = res;
+      console.log(res + '  ' + "Main");
+    });
   }
 
 }

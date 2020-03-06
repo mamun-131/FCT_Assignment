@@ -23,7 +23,8 @@ export class ProductComponent implements OnInit {
   }
 
   purchaseItem(id: number) {
-    this.productService.addPurchase(id,1).subscribe(
+
+    this.productService.addPurchase(String(localStorage.getItem('userId')),id).subscribe(
       (res: any) => {
         console.log(res);
       },

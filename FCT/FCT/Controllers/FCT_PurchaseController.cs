@@ -2,89 +2,109 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FCT.Context;
-using FCT.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
-
-
-/**
- * This is a .NET CORE and Angular app example coded by Md Mamunur Rahman 
- * 
- * @FileName: FCT_PurchaseController.cs
- * @Author Md Mamunur Rahman
- * @Phone: 6474473215
- * @website: http://mamun-portfolio.azurewebsites.net/Default.aspx
- * @Last Update 03-Mar-2020
- * @description: this file is Controller clss file for FCT_Purchase Table
- */
+using FCT.Context;
+using FCT.Models;
 
 namespace FCT.Controllers
 {
-    /**  
-   * <summary>  
-   * This is the FCT_PurchaseController class for controlling CRUD operation with database.  
-   * </summary>  
-   * @class FCT_PurchaseController  
-   */
-
-    [Route("api/")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class FCT_PurchaseController : Controller
+    public class FCT_PurchaseController : ControllerBase
     {
-        //PRIVATE INSTANCE VARIABLE++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        //CONSTRUCTOR++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        /**
-        * <summary>
-        * This is the Constructor for initialiging the private variables
-        * </summary>
-        * @Constructor ProductController
-        * @param {object ApplicationDbContext} context
-        */
         public FCT_PurchaseController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        //PUBLIC METHODES++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        /**
-    * <summary>
-    * This is the public method for adding new data.
-    * </summary>
-    * @method AddPersion
-    * @returns {ActionResult<Person>} 
-    * @param {object Person} person
-    * POST : /api/FCT_Purchase/AddPurchase
-    */
-
-        [HttpPost("AddPurchase")]
-        public ActionResult<FCT_Purchase> AddPurchase(FCT_Purchase purchase)
+        // GET: api/FCT_Purchase
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<FCT_Purchase>>> GetFCT_Purchase()
         {
-            var pourchase1 = new FCT_Purchase()
-            {
-                id = purchase.id,
-                userId = purchase.userId,
-                productId = purchase.productId
-            };
+            return await _context.FCT_Purchase.ToListAsync();
+        }
 
-            try
+        // GET: api/FCT_Purchase/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<FCT_Purchase>> GetFCT_Purchase(int id)
+        {
+            var fCT_Purchase = await _context.FCT_Purchase.FindAsync(id);
+
+            if (fCT_Purchase == null)
             {
-              //  _context.FCT_Purchase.FromSqlRaw();
-                 _context.FCT_Purchase.Add(pourchase1);
-                 _context.SaveChanges();
-                return Ok(pourchase1);
+                return NotFound();
             }
-            catch (Exception)
-            {
 
+            return fCT_Purchase;
+        }
+
+        // PUT: api/FCT_Purchase/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutFCT_Purchase(int id, FCT_Purchase fCT_Purchase)
+        {
+            if (id != fCT_Purchase.id)
+            {
                 return BadRequest();
             }
 
+            _context.Entry(fCT_Purchase).State = EntityState.Modified;
 
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FCT_PurchaseExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
+            return NoContent();
+        }
+
+        // POST: api/FCT_Purchase
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<FCT_Purchase>> PostFCT_Purchase(FCT_Purchase fCT_Purchase)
+        {
+            _context.FCT_Purchase.Add(fCT_Purchase);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetFCT_Purchase", new { id = fCT_Purchase.id }, fCT_Purchase);
+        }
+
+        // DELETE: api/FCT_Purchase/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<FCT_Purchase>> DeleteFCT_Purchase(int id)
+        {
+            var fCT_Purchase = await _context.FCT_Purchase.FindAsync(id);
+            if (fCT_Purchase == null)
+            {
+                return NotFound();
+            }
+
+            _context.FCT_Purchase.Remove(fCT_Purchase);
+            await _context.SaveChangesAsync();
+
+            return fCT_Purchase;
+        }
+
+        private bool FCT_PurchaseExists(int id)
+        {
+            return _context.FCT_Purchase.Any(e => e.id == id);
         }
     }
 }

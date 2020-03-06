@@ -12,6 +12,8 @@ namespace FCT.Context
     {
         public DbSet<Product> product { get; set; }
         public DbSet<FCT_Purchase> FCT_Purchase { get; set; }
+        public DbSet<FCT_PurchaseDetail> FCT_PurchaseDetail { get; set; }
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base(context)
         {
         }

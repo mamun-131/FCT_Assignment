@@ -5,8 +5,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 //import { PagesModule } from './components/pages/pages.module';
+import { AuthInterceptor } from './components/auth/auth.interceptor';
 import { AppRoutingModule } from './app.routing.module'
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
@@ -14,6 +15,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SharedModule } from './components/shared/shared.module';
 import { MainComponent } from './components/main/main.component';
 import { ShopModule } from './components/shop/shop.module';
+import { AppService } from './app.service';
 
 
 
@@ -33,10 +35,18 @@ import { ShopModule } from './components/shop/shop.module';
     ReactiveFormsModule,
     AppRoutingModule,
     SharedModule,
-    ShopModule
+    ShopModule,
+    ToastrModule.forRoot(),
     ],
    
-  providers: [],
+  providers: [ToastrService,
+              AppService,
+              {
+                  provide: HTTP_INTERCEPTORS,
+                  useClass: AuthInterceptor,
+                  multi: true
+              }
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,15 +37,30 @@ export class ProductService {
       );
   }
 
-  addPurchase(userId: number, productId:number) {
-    var body = {
-      id:3,
-      userId: 3,
-      productId: 3
+  addPurchase(userId: string, productId:number) {
+    var body = {      
+      userId: userId,
+      productId: productId
     };
-    return this.httpClient.post('/api/FCT_Purchase/AddPurchase', body,this.options);
+    return this.httpClient.post('/api/FCT_Purchase', body,this.options);
   }
 
+  getAllPurchases(): Observable<any[]> {
+    return this.httpClient.get<any[]>('api/FCT_PurchaseDetail')
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+
+  deletePurchasesById(id: number) {
+    return this.httpClient.delete('api/FCT_Purchase/' + id)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
 
   // Error handling
   errorHandl(error) {
