@@ -16,8 +16,6 @@ This is a .NET CORE Product Display, Buying and Canceling Order, JWT and Core Id
 ## Overview
 This is a .NET CORE and Angular 8 web application where you can see the product buy the product and cancle the order. To see the product you need to log in.
 
-https://localhost:44320/api/VechicleSold/
-
 ## Development
 This project is developed by .NET CORE 3.1.2 in C# and Angular 8. SQL Server Database is hosted in Azure. REST API are created for data despatch. Both Raw SQL and Core Entitiy Framework
 have been used. For raw SQL Store Procedures have been created.  
